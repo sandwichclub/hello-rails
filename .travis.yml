@@ -2,6 +2,8 @@ sudo: required
 services:
 - docker
 language: ruby
+script:
+- bundle exec rake 
 after_success:
 - docker build -t $APP_NAME .
 - docker save -o $APP_NAME.tar $APP_NAME
