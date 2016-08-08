@@ -1,0 +1,13 @@
+sudo: required
+services:
+- docker
+language: ruby
+after_success:
+- docker build -t $APP_NAME .
+- docker save -o $APP_NAME.tar $APP_NAME
+- export URL=$(curl -s -u ":$DOCKER_UPLOAD_TOKEN" -X POST https://www.skyliner.io/images/docker/$TRAVIS_COMMIT)
+- curl --upload-file $APP_NAME.tar $URL
+env:
+  global:
+  - APP_NAME=hello-rails
+  - secure: aOAVfTiflm2CAu4aXMW+q5I5kD28fPagMPe48Ze1M5OQrtxkIpAPPe/k3H7DhBHl0CrLk4FgG4vAajQC37drdM+HVG990xE9WYWlTHEYbplXokXrsi0+n29/mS99S1CH3kSJDKT8Vscim1M6HkVycg9BGPGyQWzAx37dr0gMPiNMReE+RIpDtoNdpFvwn7Io74GZdbje114SITNzpbikR8QZSKB4gj9+dR3zFBNCSrWINcPeT5NdUoKBxJiMyEgZrV1Zn+PXhvq4S5LJyOpDI89EvPRcYiNopxzbcnP7kqokDk2MjIQ82unZlCF712rUsCkSqLzIUbvgWNqeO7iA5n9tG/XKg2t+uiSifDb2mLIg59TlIqSLjTtSw2M9Z7T66D4hNKr9b8zvDl7NK+dPCGis2DteQcILxs5VHRv/Ro/VgTLM8MfA6Nsg93ETaVCBJvGOOpj8reADrj7qJP39mKXDOP8Jm8trs8rN4KYlH0jrb4M9GWNiDpNck0NLLrB6kV2RpouSNHYIOw63hHQx/ud0i8B+g9iDRyG7pUWtGvxlqiFLxytWdaAg5uir6T8dniIWOhsO8Ts5QS+0J3R0rgWlV4YGIqFZO73LBlKWz2nB2fpkvvvDwhwTD8X4tzePrJ7wvHBCy3eD4kf4L4L74cYh9qBHqkJhjrHB5ARN044=
