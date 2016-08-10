@@ -21,6 +21,8 @@ COPY . .
 RUN \
     # Upgrade old packages.
     apk --update upgrade && \
+    # Ensure we have ca-certs installed.
+    apk add --no-cache ca-certificates && \
     # Install build packages.
     apk add --virtual build-packages build-base $BUILD_PACKAGES && \
     # Install runtime packages.
