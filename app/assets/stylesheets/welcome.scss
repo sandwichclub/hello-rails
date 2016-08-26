@@ -1,6 +1,8 @@
 body {
-  background-image: image-url("background.png");
   font: bold 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-image: image-url("background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #logo {
@@ -23,8 +25,7 @@ p {
   margin-right: auto;
   width: 500px;
   line-height: 200%;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
 }
 
 #prompt {
@@ -36,7 +37,7 @@ div {
   text-align: center;
 }
 
-a {
+a.button {
   padding: 20px 150px;
   color: gray;
   text-decoration: none;
