@@ -21,20 +21,27 @@ If you have any trouble, please drop us a line at [support@skyliner.io](mailto:s
 * Depends on `puma-heroku`, which borrows Heroku's recommended Puma
   configuration.
 
-## Setting Up a Database
+## Setting up a database
 
-* Follow the directions [here](https://www.skyliner.io/help/databases) to create an RDS instance of your preferred database.
-* Edit the config/database.yml file in your project and modify the "production" entry to look like the following:
+* Follow the directions [here](https://www.skyliner.io/help/databases) to create
+  an RDS instance of your preferred database.
+* Edit the `config/database.yml` file in your project and modify the
+  `production` entry to look like the following:
 
 ```yaml
 <dev and test stuff here>
 
 production:
-  url: "<%= ENV["DB_URL"] %>"
+  url: "<%= ENV["DATABASE_URL"] %>"
 ```
 
-* In Skyliner, go to the Setting pages for your app and select the Configuration section.
-* Click the gear to edit the settings and enter "DB_URL" (no quotes) in the key field and the [database url](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database) for your database in the value field. 
-* Select the Skyliner environment you want the setting to apply too (QA or Production).
-* Click update to save your settings.
-* Redeploy the environment you are interested in.
+* In Skyliner, go to the *Setting* page for your app and select the
+  *Configuration* section.
+* Click the gear to edit the settings and enter `DATABASE_URL` in the key field
+  and the
+  [database url](http://edgeguides.rubyonrails.org/configuring.html#configuring-a-database)
+  for your database in the value field.
+* Select the Skyliner environment you want the setting to apply to (*QA* or
+  *Production*).
+* Click *Update* to save your settings.
+* Re-deploy to the environment you are interested in.
