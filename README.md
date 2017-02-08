@@ -8,11 +8,9 @@ If you have any trouble, please drop us a line at [support@skyliner.io](mailto:s
 
 ## Differences from a stock Rails application
 
-* Depends on the `lograge` gem, which converts Rails's weirdly verbose logging
-  into production-ready logging using Logstash JSON formatting.
-* Depends on Heroku's `rails_12factor` gem, which directs the logs to stdout and
-  allows Rails to serve up static assets. (If static asset serving becomes a
-  performance hotspot, we recommend setting up CloudFront.)
+* Writes logs to `STDOUT`.
+* Serves static assets from the Rails process itself. (If static asset serving
+  becomes a performance hotspot, we recommend setting up CloudFront.)
 * Commits `secrets.yaml` to source control. It pulls the production secret base
   from the `SECRET_KEY_BASE` environment variable, which is securely managed by
   Skyliner.

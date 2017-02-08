@@ -1,9 +1,12 @@
 Rails.application.configure do
-  # Enable lograge with JSON event formatting.
-  config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Logstash.new
-
   # Settings specified here will take precedence over those in config/application.rb.
+
+  # Log to STDOUT using tagged logging.
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 
   # Code is not reloaded between requests.
   config.cache_classes = true

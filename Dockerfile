@@ -1,6 +1,11 @@
 # Our base image is Ruby 2.3, running on Alpine Linux.
 FROM ruby:2.3-alpine
 
+ENV RAILS_SERVE_STATIC_FILES=1 \
+    RAILS_LOG_TO_STDOUT=1 \
+    RAILS_ENV=production \
+    RACK_ENV=production
+
 # Build packages are system packages that are only required for installing
 # gems, precompiling assets, etc. They are not included in the final Docker
 # image.
@@ -30,7 +35,7 @@ RUN \
     # Install application gems.
     bundle install --jobs 4 --without development test --with production && \
     # Precompile Rails assets.
-    RAILS_ENV=production bundle exec rake assets:precompile && \
+    bundle exec rake assets:precompile && \
     # Clean up build packages.
     apk del --purge build-packages && \
     # Delete APK and gem caches.
