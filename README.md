@@ -24,8 +24,7 @@ If you have any trouble, please drop us a line at [support@skyliner.io](mailto:s
 
 * Edit `Procfile` to include a `worker` process. If you uncomment the example,
   you'll need a Rake task named `jobs:work`.
-* Edit the `Dockerfile`'s `CMD` to either increase the number of `worker`
-  processes.
+* Edit the `Dockerfile`'s `CMD` to increase the number of `worker` processes.
 
 N.B.: Worker processes run on the same instances as the web processes, so budget
 accordingly when selecting an instance type.
