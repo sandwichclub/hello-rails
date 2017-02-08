@@ -44,5 +44,5 @@ RUN \
     rm -rf /usr/local/lib/ruby/gems/*/cache/* && \
     rm -rf ~/.gem
 
-# Run your application with Puma.
-CMD puma -e production
+# Run your application using 1 instance of Puma and 0 background job instances.
+CMD foreman start -m web=1,worker=0
