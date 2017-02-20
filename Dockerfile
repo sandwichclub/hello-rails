@@ -19,6 +19,9 @@ ENV RUNTIME_PACKAGES \
     # Required for the sqlite3 gem.
     sqlite-libs
 
+# Put everything in its own directory.
+WORKDIR /app
+
 # Copy your application into the container.
 COPY . .
 
