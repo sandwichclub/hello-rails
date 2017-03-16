@@ -48,4 +48,4 @@ RUN \
     rm -rf ~/.gem
 
 # Run your application using 1 instance of Puma and 0 background job instances.
-CMD foreman start -m web=1,worker=0
+CMD foreman start --no-timestamps -m web=1,worker=0
